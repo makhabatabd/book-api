@@ -87,7 +87,6 @@ if (document.querySelector(".sign")) {
       ageInput.removeEventListener("input", ageValidation);
       removeSpans();
       let data = await registerData(newUser);
-      console.log(data);
       if (data) {
         localStorage.setItem("user", JSON.stringify(data));
         nameInput.value = "";
@@ -152,7 +151,6 @@ if (document.querySelector(".sign")) {
       logInPassword.removeEventListener("click", logInPasswordValidation);
       removeLogInSpans();
       let data = await LogInData(logUser);
-      console.log(data);
       if (data) {
         localStorage.setItem("user", JSON.stringify(data));
         logInUser.value = "";

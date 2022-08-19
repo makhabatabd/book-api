@@ -4,6 +4,9 @@ import { updateBook } from "./api";
 if (window.location.pathname.endsWith("/favorites.html")) {
   const favoritesOutter = document.querySelector(".favorites-outter");
   const title = document.querySelector("#no-favorites");
+  const blankHeart = document.querySelector(".blank-heart");
+  const redHeart = document.querySelector(".red-heart");
+  const homeIcon = document.querySelector(".home-page");
   window.onload = async () => {
     let trashIcon;
     async function mapFavorites() {
@@ -13,6 +16,8 @@ if (window.location.pathname.endsWith("/favorites.html")) {
       let count = 0;
       books.map((book) => {
         if (book.isFavorite === true) {
+          blankHeart.style.display = "none";
+          redHeart.style.display = "block";
           let bookList = ` <div class="card" id=${book.id}>
                     <img src="https://scolarcardiff.files.wordpress.com/2012/06/scan0013.jpg" alt="book pic" />
                     <div class="bottom">
@@ -25,6 +30,8 @@ if (window.location.pathname.endsWith("/favorites.html")) {
           favoritesOutter.insertAdjacentHTML("beforeend", bookList);
           count = count + 1;
         } else if (count === 0) {
+          blankHeart.style.display = "block";
+          redHeart.style.display = "none";
           title.innerText = "No favorite books!";
         }
       });
@@ -32,12 +39,9 @@ if (window.location.pathname.endsWith("/favorites.html")) {
     async function deleteFav() {
       trashIcon = document.querySelectorAll("#fav-trash");
       trashIcon.forEach((item) => {
-        console.log(item);
         item.addEventListener("click", async () => {
-          console.log("click");
           const bookId = item.closest(".card").id;
           let book = await getOneBook(bookId);
-          console.log(book);
 
           book.isFavorite = !book.isFavorite;
           book.genres = Array.from(book.genres);
@@ -53,5 +57,9 @@ if (window.location.pathname.endsWith("/favorites.html")) {
       await deleteFav();
     };
     render();
+
+    homeIcon.addEventListener("click", () => {
+      window.location.assign("list.html");
+    });
   };
 }

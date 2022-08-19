@@ -1,4 +1,4 @@
-.favorites {
+.search {
     text-align: center;
 
     &-outter {
@@ -11,9 +11,10 @@
         box-sizing: border-box;
     }
 
-    h2 {
-        color: $secondary-color;
+    &-title {
         font-size: 31px;
+        margin: 40px 0;
+        color: $secondary-color;
     }
 
     p {
@@ -22,15 +23,10 @@
         color: $secondary-color;
         font-size: 18px;
         position: absolute;
-        bottom: 9%;
-        left: 31%;
+        bottom: 1%;
+        left: 30%;
         margin: 14px 0;
         width: 150px;
         padding: 12px 0;
     }
-}
-
-#fav-trash {
-    width: 30px;
-    height: 30px;
 }

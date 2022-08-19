@@ -11,7 +11,6 @@ export const LogInData = async (user) => {
     body: JSON.stringify(user),
   });
   const data = await response.json();
-  console.log(data);
   if (response.ok) {
     return data;
   } else {
@@ -28,7 +27,6 @@ export const registerData = async (user) => {
     body: JSON.stringify(user),
   });
   const data = await response.json();
-  console.log(data);
   if (response.ok) {
     return data;
   } else {
@@ -46,7 +44,6 @@ export const addBook = async (newBook) => {
     body: JSON.stringify(newBook),
   });
   const data = await response.json();
-  console.log(data);
   if (response.ok) {
     return data;
   }
@@ -65,6 +62,19 @@ export const getBooks = async () => {
   if (response.ok) {
     books.genres = new Set(books.genres);
     return books;
+  }
+};
+
+export const getMe = async () => {
+  const response = await fetch("http://localhost:1717/me", {
+    method: "GET",
+    headers: {
+      "X-Auth": person.token,
+    },
+  });
+  let user = await response.json();
+  if (response.ok) {
+    return user;
   }
 };
 

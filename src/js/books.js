@@ -25,6 +25,21 @@ if (window.location.pathname.endsWith("/list.html")) {
   const overlayInner = document.querySelector(".overlay-inner");
   const blankHeart = document.querySelector(".blank-heart");
   const redHeart = document.querySelector(".red-heart");
+  let searchInput = document.querySelector("#search-input");
+  const searchButton = document.querySelector("#search-button");
+
+  //search
+  searchButton.addEventListener("click", () => {
+    let searchValue = searchInput.value.toLowerCase().replace(/\s/g, "");
+    location.replace("http://localhost:3000/search.html?" + searchValue);
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      let searchValue = searchInput.value.toLowerCase().replace(/\s/g, "");
+      location.replace("http://localhost:3000/search.html?" + searchValue);
+    }
+  });
 
   //Add modal logic
   let newBook = {
@@ -103,7 +118,6 @@ if (window.location.pathname.endsWith("/list.html")) {
   let checkedArray = [];
 
   //get books logic
-
   window.onload = async () => {
     let trashIcon;
     let editIcon;
@@ -112,8 +126,10 @@ if (window.location.pathname.endsWith("/list.html")) {
     async function mapBooks() {
       let books = await getBooks();
       bookOutter.innerHTML = "";
+      let count = 0;
       books.map((book) => {
         if (book.isFavorite === true) {
+          count = count + 1;
           let bookList = `<div class="card" id=${book.id}>
                    <img src="https://scolarcardiff.files.wordpress.com/2012/06/scan0013.jpg" alt="book pic"/>
                     <div class="bottom">
@@ -158,6 +174,23 @@ if (window.location.pathname.endsWith("/list.html")) {
           bookOutter.insertAdjacentHTML("beforeend", bookList);
         }
 
+        //favorites show in header red or blank
+        async function mapFavorites() {
+          let books = await getBooks();
+          let count = 0;
+          books.map((book) => {
+            if (book.isFavorite === true) {
+              blankHeart.style.display = "none";
+              redHeart.style.display = "block";
+              count = count + 1;
+            } else if (count === 0) {
+              blankHeart.style.display = "block";
+              redHeart.style.display = "none";
+            }
+          });
+        }
+        mapFavorites();
+
         //delete logic
         trashIcon = document.querySelectorAll("#trash");
         editIcon = document.querySelectorAll("#edit");
@@ -179,6 +212,7 @@ if (window.location.pathname.endsWith("/list.html")) {
       return deleteBook(bookId);
     }
 
+    //details logic
     let closeBtn;
     async function infoHandler() {
       infoIcon.forEach((item) => {
@@ -199,7 +233,6 @@ if (window.location.pathname.endsWith("/list.html")) {
               </div>`;
           overlayInner.insertAdjacentHTML("beforeend", renderBook);
           closeBtn = document.getElementById("details-close");
-          console.log(closeBtn);
           closeBtn.addEventListener("click", () => {
             detailsContainer.style.display = "none";
             overlayInner.innerHTML = "";
@@ -208,6 +241,7 @@ if (window.location.pathname.endsWith("/list.html")) {
       });
     }
 
+    //edit logic
     async function editHandler() {
       editIcon.forEach((item) => {
         item.addEventListener("click", async () => {
@@ -277,12 +311,12 @@ if (window.location.pathname.endsWith("/list.html")) {
       });
     }
 
+    //favorites logic
     async function heartPress() {
       heartIcon.forEach((item) => {
         item.addEventListener("click", async () => {
           const bookId = item.closest(".card").id;
           let book = await getOneBook(bookId);
-          console.log(book);
 
           book.isFavorite = !book.isFavorite;
           book.genres = Array.from(book.genres);
@@ -302,6 +336,7 @@ if (window.location.pathname.endsWith("/list.html")) {
     };
     render();
 
+    //add function
     addButton.addEventListener("click", async (e) => {
       e.preventDefault();
       addNameInput.addEventListener("input", bookNameValidation);
@@ -346,7 +381,13 @@ if (window.location.pathname.endsWith("/list.html")) {
     });
   };
 
+  //relocate
   blankHeart.addEventListener("click", () => {
+    window.location.assign("favorites.html");
+  });
+
+  //relocate
+  redHeart.addEventListener("click", () => {
     window.location.assign("favorites.html");
   });
 }

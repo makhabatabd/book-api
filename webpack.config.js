@@ -36,6 +36,10 @@ module.exports = {
       filename: "favorites.html",
       template: "src/pages/favorites.html",
     }),
+    new HTMLWebpackPlugin({
+      filename: "search.html",
+      template: "src/pages/search.html",
+    }),
     new CopyWebpackPlugin({
       patterns: [
         {

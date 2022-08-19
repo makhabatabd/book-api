@@ -71,3 +71,21 @@ input[type="checkbox"] {
 .color__heart {
     fill: red;
 }
+
+.user-modal {
+    display: none;
+    position: absolute;
+    text-align: center;
+    top: 5%;
+    right: 2%;
+    width: 160px;
+    background-color: $secondary-color;
+    height: 68px;
+    color: black;
+    border-radius: 5px;
+
+    p {
+        font-size: 20px;
+        margin: 8px;
+    }
+}
