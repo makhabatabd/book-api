@@ -65,6 +65,13 @@ module.exports = {
         type: "asset",
       },
       {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        loader: "file-loader",
+        options: {
+          outputPath: "../fonts",
+        },
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {

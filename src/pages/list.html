@@ -5,11 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Book List</title>
 </head>
 
 <body>
     <header>
+        <div class="header-icons">
+            <img class="blank-heart" src="../assets/media/heart.svg" alt="heart">
+            <img class="red-heart" src="../assets/media/red-heart.svg" alt="red heart">
+            <img class="log-out" src="../assets/media/right-from-bracket-solid.svg" alt="log out">
+        </div>
         <div class="header">
             <div class="row1">
                 <h1>A room without books is like<br /> a body without a soul.</h1>
@@ -18,12 +23,55 @@
                 <h2>Find Your Book</h2>
                 <div class="search">
                     <input type="text" placeholder="Enter Your Book Name" />
-                    <button><i class="fas fa-search"></i></button>
+                    <button><img src="../assets/media/search.png" alt="search"></button>
                 </div>
             </div>
+        </div>
     </header>
-    </div>
-    <main></main>
+    <main>
+        <div class="container">
+            <div class="add-div">
+                <button id="add">Add a book</button>
+            </div>
+            <div class="card__outter">
+
+            </div>
+        </div>
+        <div class="modal__outter">
+            <div class="modal__inner">
+                <div class="close-div">
+                    <img id="add-close" src="../assets/media/close.png" alt="close button">
+                </div>
+                <form>
+                    <input class="add-input" id="add-name" type="text" placeholder="name">
+                    <span class="span" id="add-name__span"></span>
+                    <input class="add-input" id="add-author" type="text" placeholder="author">
+                    <span class="span" id="add-author__span"></span>
+                    <input class="add-input" id="add-year" type="number" placeholder="publishYear">
+                    <input class="add-input" id="add-house" type="text" placeholder="publishHouse">
+                    <input class="add-input" id="add-pages" type="number" placeholder="pagesNumber">
+                    <div class="genres__options">
+                        <input class="add-input" id="add-fiction" type="checkbox" value="Утопия">
+                        Утопия
+                        <input class="add-input" id="add-genre" type="checkbox" value="Научная фантастика"> Научная
+                        фантастика
+                        <input class="add-input" id="add-genre" type="checkbox" value="Приключения"> Приключения
+                        <input class="add-input" id="add-genre" type="checkbox" value="Роман"> Роман
+                        <input class="add-input" id="add-genre" type="checkbox" value="Фэнтези" checked> Фэнтези
+                    </div>
+                    <input class="add-input" id="add-language" type="text" placeholder="originalLanguage">
+                    <input type="text" id="edit-id">
+                    <button id="add-button">Add a book</button>
+                    <button id="edit-button">Edit a book</button>
+                </form>
+            </div>
+        </div>
+        <section class="details">
+            <div class="details-container">
+                <div class="overlay-inner"></div>
+            </div>
+        </section>
+    </main>
 </body>
 
 </html>

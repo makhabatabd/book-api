@@ -1,0 +1,23 @@
+.favorites {
+    text-align: center;
+
+    &-outter {
+        width: 60%;
+        margin: 0 auto;
+        margin-top: 25px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 0.5fr));
+        grid-gap: 20px;
+        box-sizing: border-box;
+    }
+
+    h2 {
+        color: $secondary-color;
+        font-size: 30px;
+    }
+}
+
+#fav-trash {
+    width: 30px;
+    height: 30px;
+}
