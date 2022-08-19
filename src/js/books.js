@@ -3,7 +3,10 @@ import { deleteBook } from "./api";
 import { addBook } from "./api";
 import { getOneBook } from "./api";
 import { updateBook } from "./api";
-if (window.location.pathname.endsWith("/list.html")) {
+if (
+  window.location.pathname.endsWith("/list.html") &&
+  JSON.parse(localStorage.getItem("user"))
+) {
   const bookOutter = document.querySelector(".card__outter");
   const add = document.querySelector("#add");
   const closeAddModal = document.querySelector("#add-close");
@@ -390,4 +393,8 @@ if (window.location.pathname.endsWith("/list.html")) {
   redHeart.addEventListener("click", () => {
     window.location.assign("favorites.html");
   });
+} else {
+  if (window.location.pathname !== "/index.html") {
+    window.location.replace("/index.html");
+  }
 }
