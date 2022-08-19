@@ -89,3 +89,17 @@ input[type="checkbox"] {
         margin: 8px;
     }
 }
+
+@media screen and (max-width:$grid-breakpoints-sm) {
+    .modal__inner {
+        width: 450px;
+    }
+
+    .genres__options {
+        flex-direction: column;
+    }
+
+    input[type="checkbox"] {
+        margin: 5px 0;
+    }
+}

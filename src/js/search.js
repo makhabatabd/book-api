@@ -18,7 +18,7 @@ if (window.location.href.indexOf("search.html") != -1) {
                             <img src="https://scolarcardiff.files.wordpress.com/2012/06/scan0013.jpg" alt="book pic" />
                             <div class="bottom">
                                 <h3 class="title">${book.name}</h3>
-                                <p class="author">${book.author}</p>
+                                <p id="search-author" class="author">${book.author}</p>
                             </div>
                         </div>
                       `;

@@ -23,6 +23,10 @@
     font-size: 20px;
     color: #755139FF;
 
+    h1 {
+        font-size: 30px;
+    }
+
     h3 {
         margin: 17px 0 10px 0;
     }
@@ -36,47 +40,128 @@
             font-size: 20px;
         }
     }
-}
 
-.overlay-inner .close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    outline: none;
-    border: none;
-    font-size: 17px;
-    background-color: transparent;
-}
+    .close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        outline: none;
+        border: none;
+        font-size: 17px;
+        background-color: transparent;
 
-.close #details-close {
-    width: 30px;
-    height: 30px;
-}
+        #details-close {
+            width: 30px;
+            height: 30px;
+        }
+    }
 
-.overlay-inner .inner-box {
-    margin-top: 90px;
-    display: flex;
-    justify-content: space-around;
+    .inner-box {
+        margin-top: 90px;
+        display: flex;
+        justify-content: space-around;
 
-    img {
-        width: 204px;
-        height: 230px;
+        img {
+            width: 204px;
+            height: 230px;
+        }
+    }
+
+    .inner-box button {
+        outline: none;
+        border: none;
+        width: 100px;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+        padding: 0.3rem 0.5rem;
+    }
+
+    .description {
+        margin-top: 2rem;
+        text-align: justify;
+        font-size: 13px;
     }
 }
 
-
-.overlay-inner .inner-box button {
-    outline: none;
-    border: none;
-    width: 100px;
-    border-radius: 5px;
-    color: white;
-    font-weight: bold;
-    padding: 0.3rem 0.5rem;
+.info {
+    width: 55%;
 }
 
-.overlay-inner .description {
-    margin-top: 2rem;
-    text-align: justify;
-    font-size: 13px;
+@media screen and (max-width:$grid-breakpoints-md) {
+    .overlay-inner {
+        background: $secondary-color;
+        width: 500px;
+        height: 400px;
+        padding: 1rem;
+        font-size: 16px;
+        color: #755139FF;
+
+        h1 {
+            font-size: 25px;
+        }
+
+        h3 {
+            margin: 17px 0 10px 0;
+        }
+
+        h4 {
+            margin: 20px 0;
+
+            span {
+                display: inline-block;
+                margin: 0 0 0 10px;
+                font-size: 17px;
+            }
+        }
+
+        .inner-box {
+            margin-top: 60px;
+
+            img {
+                width: 177px;
+                height: 216px;
+            }
+
+            button {
+                width: 40px;
+            }
+        }
+
+        .close #details-close {
+            width: 23px;
+            height: 23px;
+        }
+    }
+
+    .info {
+        width: 55%;
+    }
+}
+
+@media screen and (max-width:$grid-breakpoints-sm) {
+    .overlay-inner {
+        background: $secondary-color;
+        width: 300px;
+        height: 570px;
+        padding: 1rem;
+        font-size: 16px;
+        text-align: center;
+
+        .inner-box {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            margin-top: 10px;
+        }
+    }
+
+    .info {
+        width: 100%;
+    }
+
 }
