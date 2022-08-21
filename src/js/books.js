@@ -394,7 +394,10 @@ if (
     window.location.assign("favorites.html");
   });
 } else {
-  if (window.location.pathname !== "/index.html") {
+  if (
+    !JSON.parse(localStorage.getItem("user")) &&
+    window.location.pathname !== "/index.html"
+  ) {
     window.location.replace("/index.html");
   }
 }
