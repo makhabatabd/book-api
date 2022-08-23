@@ -126,7 +126,7 @@ if (document.querySelector(".sign")) {
       ? (logInUserSpan.innerText = "Please input your username")
       : (logInUserSpan.innerText = "");
   }
-
+//smlr functions
   function logInPasswordValidation() {
     logInPassword.value.length === 0
       ? (logInPasswordSpan.innerText = "Please input your username")

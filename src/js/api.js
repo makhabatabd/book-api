@@ -17,7 +17,8 @@ export const LogInData = async (user) => {
     logInMistake.innerText = `${data}`;
   }
 };
-
+// http://localhost:1717 baseUrl
+// LogInData & registerData are simmular 
 export const registerData = async (user) => {
   const response = await fetch("http://localhost:1717/signin", {
     method: "POST",

@@ -32,15 +32,15 @@ if (
   const searchButton = document.querySelector("#search-button");
 
   //search
-  searchButton.addEventListener("click", () => {
+
+  function search() {
     let searchValue = searchInput.value.toLowerCase().replace(/\s/g, "");
     location.replace("http://localhost:3000/search.html?" + searchValue);
-  });
-
+  }
+  searchButton.addEventListener("click", search);
   document.addEventListener("keydown", function (e) {
     if (e.key === "Enter") {
-      let searchValue = searchInput.value.toLowerCase().replace(/\s/g, "");
-      location.replace("http://localhost:3000/search.html?" + searchValue);
+      search();
     }
   });
 
@@ -94,7 +94,7 @@ if (
       ? (addNameSpan.innerText = "this field is required")
       : (addNameSpan.innerText = "");
   }
-
+  // smlr functions
   function bookAuthorValidation() {
     !addAuthorInput.value
       ? (addAuthorSpan.innerText = "this field is required")
@@ -378,21 +378,24 @@ if (
           setTimeout(() => {
             modalOutter.style.display = "none";
             checkedArray = [];
+            addInputs.forEach((item) => {
+              item.value = "";
+            });
+            render();
           }, 1000);
         }
       }
     });
   };
 
-  //relocate
-  blankHeart.addEventListener("click", () => {
+  function sendToFavorites() {
     window.location.assign("favorites.html");
-  });
+  }
 
   //relocate
-  redHeart.addEventListener("click", () => {
-    window.location.assign("favorites.html");
-  });
+  blankHeart.addEventListener("click", sendToFavorites);
+  //relocate
+  redHeart.addEventListener("click", sendToFavorites);
 } else {
   if (
     !JSON.parse(localStorage.getItem("user")) &&
